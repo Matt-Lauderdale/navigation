@@ -1,0 +1,81 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+	<div class="container">
+		<ul>
+      <li class="controler-item">
+				<a class="controler" id="controler1" href=""></a>
+				<div class="tab"></div>
+				<div class="slide"  id="slide1"></div>
+			</li>
+
+      <li class="controler-item">
+				<a class="controler" href=""></a>
+				<div class="tab"></div>
+				<div class="slide" id="slide2"></div>
+			</li>
+
+      <li class="controler-item">
+				<a class="controler" href=""></a>
+				<div class="tab"></div>
+				<div class="slide" id="slide3"></div>
+			</li>
+			
+			<li class="controler-item">
+				<a class="controler" href=""></a>
+				<div class="tab"></div>
+				<div class="slide" id="slide4"></div>
+			</li>
+		</ul>
+	</div>
+  <script src="js/jquery.js"></script>
+  <script type="text/javascript">
+  	
+  	
+
+  	function changeSlide(e){	
+      var slide = $('.slide');
+      var tab = $('.tab');
+      var height = $(this).find(slide).height()+72;
+  		e.preventDefault();
+  		if (!slide.hasClass("active"))
+  		{
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+        $(this).find(slide).fadeIn(200);
+        $(this).siblings().find($('.slide')).fadeOut(200);
+        $('.container').css('height', height+'px');
+  		} 
+  	}
+
+  	$('.controler-item').click(changeSlide);
+
+  	$('.controler').on({
+        mouseenter: function () {
+          $(this).next().addClass('show');
+        },
+        mouseleave: function () {
+          $(this).next().removeClass('show');
+        }
+    });
+    //document ready
+    $(document).ready(function(){
+      $('.controler-item:first-child').trigger('click')
+    })
+
+  </script>
+</body>
+</html>
